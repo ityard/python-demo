@@ -7,15 +7,13 @@ author：程序员野客
 from selenium import webdriver
 
 browser = webdriver.Chrome()
+browser.implicitly_wait(2)
 browser.get('https://email2.163.com/')
 browser.switch_to.frame(browser.find_element_by_xpath('//iframe[starts-with(@id,"x-URS")]'))
-browser.implicitly_wait(2)
 # 自己的用户名
 browser.find_element_by_xpath('//input[@name="email"]').send_keys('xxx')
 # 自己的密码
 browser.find_element_by_xpath('//input[@name="password"]').send_keys('xxx')
 browser.find_element_by_xpath('//*[@id="dologin"]').click()
-browser.implicitly_wait(2)
 print(browser.page_source)
-browser.implicitly_wait(2)
 browser.quit()
